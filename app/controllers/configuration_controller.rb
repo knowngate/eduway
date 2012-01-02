@@ -42,8 +42,8 @@ class ConfigurationController < ApplicationController
         end
       end
     
-      Configuration.set_config_values(params[:configuration])
-      Configuration.save_institution_logo(params[:upload]) unless params[:upload].nil?
+      #Configuration.set_config_values(params[:configuration])
+      #Configuration.save_institution_logo(params[:upload]) unless params[:upload].nil?
       session[:language] = nil unless session[:language].nil?
       @current_user.clear_menu_cache
       flash[:notice] = "#{t('flash_msg8')}"
