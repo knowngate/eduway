@@ -1,5 +1,5 @@
 WickedPdf.config = {
-    :wkhtmltopdf => '/home/foradian/sooraj/wkhtmltopdf-i386',
+    :wkhtmltopdf => '/data/wicked_pdf/wkhtmltopdf-i386',
     :layout => "pdf.html",
     :margin => {    :top=> 40,
                     :bottom => 20,

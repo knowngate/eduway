@@ -122,7 +122,8 @@ class UserController < ApplicationController
 #          user.update_attributes(:password => user.password,
 #            :role => user.role_name
 #          )
-          flash[:notice]= "#{t('flash7')}"
+#          flash[:notice]= "#{t('flash7')}"
+          flash[:notice] = "password cannot be changed in demo version"
           redirect_to :action=>"edit", :id=>user.username
         else
           flash[:warn_notice] =  "<p>#{t('flash10')}</p>"
