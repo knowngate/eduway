@@ -24,7 +24,7 @@
 }
 .small{
     font-size: 11px;
-    float:left;
+    float:right;
     width:35px;
 }
 .small-strike {
@@ -35,7 +35,7 @@
 }
 
 .box{
-    width:920px;
+    width:965px;
     margin:0px auto;
 }
 
@@ -162,14 +162,41 @@
     float: right;
     margin-right: 10px;
     margin-top: -6px;
-    width: auto;
+    width: 205px;
 }
 
+.each_category{
+    font-size: 12px;
+    overflow:auto;
+    width:213px;;
+
+}
+.each_category input{
+    float:right;
+    width:auto;
+}
+
+.each_category label {
+    float: right;
+    margin-top: -7px;
+    width: 178px;
+    font-size:13px;
+    font-weight: normal;
+    margin-right: 8px;
+}
+.categories {
+    height: 100px;
+    overflow: auto;
+    max-width: 220px;
+    float: right;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 
 .batches {
     height: 183px;
     overflow: auto;
-    width: 233px;
+    width: 250px;
     float: right;
 }
 .label-field-pair {
@@ -211,5 +238,9 @@ input#particulars_select_category{
     margin-left: 3px;
 }
 table#listing td.col-4 {
-    width: 26%;
+    width: 36%;
 }
+table#listing td.col-1 {
+    width: 2%;
+}
+

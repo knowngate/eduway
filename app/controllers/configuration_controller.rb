@@ -26,27 +26,27 @@ class ConfigurationController < ApplicationController
   def settings
     @config = Configuration.get_multiple_configs_as_hash ['InstitutionName', 'InstitutionAddress', 'InstitutionPhoneNo', \
         'StudentAttendanceType', 'CurrencyType', 'ExamResultType', 'AdmissionNumberAutoIncrement','EmployeeNumberAutoIncrement', \
-        'NetworkState','Locale','FinancialYearStartDate','FinancialYearEndDate']
-
+        'NetworkState','Locale','FinancialYearStartDate','FinancialYearEndDate','EnableNewsCommentModeration','DefaultCountry','TimeZone']
+    @grading_types = Course::GRADINGTYPES
+    @enabled_grading_types = Configuration.get_grading_types
+    @time_zones = TimeZone.all
+    @school_detail = SchoolDetail.first || SchoolDetail.new
+    @countries=Country.all
     if request.post?
-
-      unless params[:upload].nil?
-        @temp_file=params[:upload][:datafile]
-        unless FILE_EXTENSIONS.include?(File.extname(@temp_file.original_filename).downcase)
-          flash[:notice] = "#{t('flash1')}"
-          redirect_to :action => "settings"  and return
-        end
-        if @temp_file.size > FILE_MAXIMUM_SIZE_FOR_FILE
-          flash[:notice] = "#{t('flash2')}"
-          redirect_to :action => "settings" and return
-        end
-      end
-    
-      #Configuration.set_config_values(params[:configuration])
-      #Configuration.save_institution_logo(params[:upload]) unless params[:upload].nil?
+#      Configuration.set_config_values(params[:configuration])
       session[:language] = nil unless session[:language].nil?
+      @school_detail.logo = params[:school_detail][:school_logo] if params[:school_detail].present?
+#      unless @school_detail.save
+#        @config = Configuration.get_multiple_configs_as_hash ['InstitutionName', 'InstitutionAddress', 'InstitutionPhoneNo', \
+#            'StudentAttendanceType', 'CurrencyType', 'ExamResultType', 'AdmissionNumberAutoIncrement','EmployeeNumberAutoIncrement', \
+#            'NetworkState','Locale','FinancialYearStartDate','FinancialYearEndDate','EnableNewsCommentModeration','DefaultCountry','TimeZone']
+#        return
+#      end
       @current_user.clear_menu_cache
-      flash[:notice] = "#{t('flash_msg8')}"
+      Configuration.clear_school_cache(@current_user)
+      News.new.reload_news_bar
+#      flash[:notice] = "#{t('flash_msg8')}"
+      flash[:notice] = "Settings cannot be changed in demo version"
       redirect_to :action => "settings"  and return
     end
   end

@@ -1,3 +1,21 @@
+#Fedena
+#Copyright 2011 Foradian Technologies Private Limited
+#
+#This product includes software developed at
+#Project Fedena - http://www.projectfedena.org/
+#
+#Licensed under the Apache License, Version 2.0 (the "License");
+#you may not use this file except in compliance with the License.
+#You may obtain a copy of the License at
+#
+#  http://www.apache.org/licenses/LICENSE-2.0
+#
+#Unless required by applicable law or agreed to in writing, software
+#distributed under the License is distributed on an "AS IS" BASIS,
+#WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#See the License for the specific language governing permissions and
+#limitations under the License.
+
 module AutosuggestMenuHelper
   def autosuggest_menuitems
     Rails.cache.fetch("user_autocomplete_menu#{session[:user_id]}"){
@@ -28,10 +46,6 @@ module AutosuggestMenuHelper
         {:menu_type => 'link' ,:label => 'autosuggest_menu.department_wise_payslip',:value =>{:controller => :employee,:action => :department_payslip}},
         {:menu_type => 'link' ,:label => 'autosuggest_menu.finance',:value =>{:controller => :finance,:action => :index}},
         {:menu_type => 'link' ,:label => 'autosuggest_menu.manage_fees',:value =>{:controller => :finance,:action => :fees_index}},
-        {:menu_type => 'link' ,:label => 'autosuggest_menu.master_fees',:value =>{:controller => :finance,:action => :master_fees}},
-        {:menu_type => 'link' ,:label => 'autosuggest_menu.additional_fees',:value =>{:controller => :finance,:action => :additional_fees}},
-        {:menu_type => 'link' ,:label => 'autosuggest_menu.view_additional_fees',:value =>{:controller => :finance,:action => :additional_fees_list}},
-        {:menu_type => 'link' ,:label => 'autosuggest_menu.create_additional_fees',:value =>{:controller => :finance,:action => :additional_fees_create_form}},
         {:menu_type => 'link' ,:label => 'autosuggest_menu.fee_collection',:value =>{:controller => :finance,:action => :fee_collection}},
         {:menu_type => 'link' ,:label => 'autosuggest_menu.fee_submission_by_course',:value =>{:controller => :finance,:action => :fees_submission_batch}},
         {:menu_type => 'link' ,:label => 'autosuggest_menu.fee_submission_for_each_student',:value =>{:controller => :finance,:action => :fees_student_search}},
@@ -51,8 +65,6 @@ module AutosuggestMenuHelper
         {:menu_type => 'link' ,:label => 'autosuggest_menu.view_assets',:value =>{:controller => :finance,:action => :view_asset}},
         {:menu_type => 'link' ,:label => 'autosuggest_menu.liability',:value =>{:controller => :finance,:action => :liability}},
         {:menu_type => 'link' ,:label => 'autosuggest_menu.view_liability',:value =>{:controller => :finance,:action => :view_liability}},
-        {:menu_type => 'link' ,:label => 'autosuggest_menu.tally_settings',:value =>{:controller => :xml,:action => :settings}},
-        {:menu_type => 'link' ,:label => 'autosuggest_menu.export_for_tally',:value =>{:controller => :xml,:action => :create_xml}},
         {:menu_type => 'link' ,:label => 'autosuggest_menu.manage_users',:value =>{:controller => :user,:action => :index}},
         {:menu_type => 'link' ,:label => 'autosuggest_menu.view_users',:value =>{:controller => :user,:action => :all}},
         {:menu_type => 'link' ,:label => 'autosuggest_menu.add_users',:value =>{:controller => :user,:action => :create}},
@@ -76,7 +88,7 @@ module AutosuggestMenuHelper
         {:menu_type => 'link' ,:label => 'autosuggest_menu.attendance_report',:value =>{:controller => :attendance_reports,:action => :index}},
         {:menu_type => 'link' ,:label => 'autosuggest_menu.view_students',:value =>{:controller => :student,:action => :view_all}},
         {:menu_type => 'link' ,:label => 'autosuggest_menu.student_advanced_search',:value =>{:controller => :student,:action => :advanced_search}},
-        {:menu_type => 'link' ,:label => 'autosuggest_menu.create_fees',:value =>{:controller => :finance,:action => :fees_create}},
+        {:menu_type => 'link' ,:label => 'autosuggest_menu.create_fees',:value =>{:controller => :finance,:action => :master_fees}},
         {:menu_type => 'link' ,:label => 'autosuggest_menu.fee_defaulters',:value =>{:controller => :finance,:action => :fees_defaulters}},
         {:menu_type => 'link' ,:label => 'autosuggest_menu.fee_structure',:value =>{:controller => :finance,:action => :fees_student_structure_search}},
         {:menu_type => 'link' ,:label => 'autosuggest_menu.messages',:value =>{:controller => :reminder,:action => :index}},
