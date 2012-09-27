@@ -1615,7 +1615,7 @@ class EmployeeController < ApplicationController
     @employee = Employee.find(params[:id])
     @dependency = @employee.former_dependency
     if request.post?
-      flash[:notice] = "Cannot archive employee on demo"
+      flash[:notice] = "Cannot archive employee on demo version"
 #      flash[:notice]= "#{t('flash32')}  #{@employee.employee_number}"
 #      EmployeesSubject.destroy_all(:employee_id=>@employee.id)
 #      @employee.archive_employee(params[:remove][:status_description])
@@ -1629,7 +1629,7 @@ class EmployeeController < ApplicationController
 #      employee_subject=EmployeesSubject.destroy_all(:employee_id=>employee.id)
 #      employee.destroy
 #      flash[:notice] = "#{t('flash46')}#{employee.employee_number}."
-      flash[:notice] = "Cannot employee employee on demo"
+      flash[:notice] = "Cannot employee employee on demo version"
       redirect_to :controller => 'user', :action => 'dashboard'
     else
       flash[:notice] = "#{t('flash44')}"
