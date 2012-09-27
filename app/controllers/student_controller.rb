@@ -252,9 +252,10 @@ class StudentController < ApplicationController
   def change_to_former
     @dependency = @student.former_dependency
     if request.post?
-      @student.archive_student(params[:remove][:status_description])
+      # @student.archive_student(params[:remove][:status_description])
+      flash[:notice] = "Cannot archive student on demo"
       render :update do |page|
-        page.replace_html 'remove-student', :partial => 'student_tc_generate'
+        page.replace_html 'remove-student', :text => "<p class=\"flash-msg\">#{flash[:notice]}</p>"
       end
     end
   end
@@ -281,8 +282,9 @@ class StudentController < ApplicationController
   def destroy
     student = Student.find(params[:id])
     unless student.check_dependency
-      student.destroy
-      flash[:notice] = "#{t('flash10')}. #{student.admission_no}."
+#      student.destroy
+#      flash[:notice] = "#{t('flash10')}. #{student.admission_no}."
+      flash[:notice] = "Cannot delete student record on demo"
       redirect_to :controller => 'user', :action => 'dashboard'
     else
       flash[:warn_notice] = "#{t('flash15')}"
